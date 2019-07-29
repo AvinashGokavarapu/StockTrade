@@ -14,8 +14,11 @@ import com.example.tradedemo.dao.inf.BaseSetterDaoInf;
 import com.example.tradedemo.dao.inf.OrderDaoInf;
 import com.example.tradedemo.dao.inf.UserDaoInf;
 import com.example.tradedemo.domain.PortfolioInfo;
+import com.example.tradedemo.domain.TransactionInfo;
 import com.example.tradedemo.domain.UserPortfolioObj;
+import com.example.tradedemo.domain.UserTrnxReq;
 import com.example.tradedemo.orm.CompanyCurrentStockView;
+import com.example.tradedemo.orm.TradeTransaction;
 import com.example.tradedemo.orm.UserAccnt;
 import com.example.tradedemo.orm.UserPortfolio;
 import com.example.tradedemo.service.inf.UserInf;
@@ -90,6 +93,32 @@ public class UserImpl implements UserInf {
 		
 		
 		return userPortFolioObj;
+	}
+
+	@Override
+	public List<TransactionInfo> getUserTrnx(UserTrnxReq userReq) {
+		
+		List<TransactionInfo> resultList = new ArrayList<TransactionInfo>();
+		 List<TradeTransaction> trnxList = this.userDaoService.getUserTrnx(userReq);
+		 
+		 for(TradeTransaction trnx : trnxList) {
+			 
+			 TransactionInfo trnxInfo = new TransactionInfo();
+			 
+			 trnxInfo.setTransactionId(trnx.getTrnxId());
+			 trnxInfo.setSymbol(trnx.getSymbol());
+			 trnxInfo.setShares(trnx.getSharesTransferred());
+			 trnxInfo.setBuyer(trnx.getBuyer());
+			 trnxInfo.setSeller(trnx.getSeller());
+			 trnxInfo.setSharePrice(trnx.getTrnxSharePrice());
+			 trnxInfo.setDate(trnx.getCreate_date());
+			 
+			 resultList.add(trnxInfo);
+			 
+			 
+		 }
+		
+		return resultList;
 	}
 	
 	
