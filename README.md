@@ -1,5 +1,5 @@
 # StockTrade
-spring boot + Hibernate  APIs to buy and sell stocks (peer to peer)
+REST APIs for trading platform to buy and sell stocks using (spring boot + hibernate)
 
 API end points 
 http://localhost:8080/swagger-ui.html#/
