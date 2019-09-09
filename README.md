@@ -110,7 +110,6 @@ CREATE TABLE IF NOT EXISTS user_portfolio (
     user_id VARCHAR(15) NOT NULL ,
     symbol VARCHAR(15) NOT NULL ,
     shares int not null,
-    amount int not null,
     create_date TIMESTAMP not null,
     update_date TIMESTAMP not null,
     FOREIGN KEY fk_portfolio_user(user_id)
