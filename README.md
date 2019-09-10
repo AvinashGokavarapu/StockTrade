@@ -47,7 +47,10 @@ CREATE TABLE IF NOT EXISTS user_info (
     user_id VARCHAR(15) NOT NULL UNIQUE,
     mail VARCHAR(20) NOT NULL,
     contact VARCHAR(25) ,
-    amount int not null
+    amount int not null ,
+    create_date TIMESTAMP not null,
+    update_date TIMESTAMP not null
+    
 )
 AUTO_INCREMENT = 1; 
 
