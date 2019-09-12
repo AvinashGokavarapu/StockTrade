@@ -122,3 +122,12 @@ CREATE TABLE IF NOT EXISTS user_portfolio (
     CONSTRAINT uc_user_symbol UNIQUE (user_id , symbol)
 )
 AUTO_INCREMENT = 1;
+
+
+
+create view company_stock_value_vw as
+SELECT t.symbol,t.value
+  FROM company_share_value_log t
+  JOIN (SELECT max(c.log_id) as log_id,c.symbol
+          FROM company_share_value_log c
+      GROUP BY c.symbol) ta ON ta.log_id = t.log_id ;
